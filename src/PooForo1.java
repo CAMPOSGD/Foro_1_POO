@@ -12,7 +12,7 @@ public class PooForo1 {
         ArrayList<String> SelectorMenu = new ArrayList<>();
         int opcion = 0;
 
-        while (opcion != 3) {
+        while (opcion != 5) {
 
             System.out.println("-----Universidad Don Bosco-----");
             System.out.println("-Almacenamiento de estudiantes-");
@@ -44,18 +44,30 @@ public class PooForo1 {
 
 
                 case 2:
-                    System.out.println("¡building!");
-
-
+                    System.out.println("Ingrese el número de carnet del alumno: ");
+                    String carnetBuscar = teclado.nextLine();
+                    if (MapaAlumnosRegistro.containsKey(carnetBuscar)){
+                        System.out.println("Alumno encontrado...");
+                        System.out.println("Nombre del alumno: "+MapaAlumnosRegistro.get(carnetBuscar));
+                        System.out.println("Carnet: "+carnetBuscar);
+                    }else{
+                        System.out.println("Alumno no encontrado, no se puede mostrar...");
+                    }
                     System.out.println("Presioná enter para regresar al menú...");
                     teclado.nextLine();
                     break;
 
 
                 case 3:
-                    System.out.println("¡building!");
+                    System.out.println("Ingrese el número de carnet del alumno que desea eliminar: ");
+                    String carnetEliminar = teclado.nextLine();
 
-
+                    if (MapaAlumnosRegistro.containsKey(carnetEliminar)){
+                        MapaAlumnosRegistro.remove(carnetEliminar);
+                        System.out.println("El alumno ha sido eliminado correctamente...");
+                    }else{
+                        System.out.println("Alumno no encontrado, no se puede eliminar");
+                    }
                     System.out.println("Presioná enter para regresar al menú...");
                     teclado.nextLine();
                     break;
@@ -66,6 +78,10 @@ public class PooForo1 {
 
                     if (MapaAlumnosRegistro.isEmpty()) {
                         System.out.println("Aún no has registrado estudiantes o los eliminaste todos");
+
+                        System.out.println("Presioná enter para regresar al menú...");
+                        teclado.nextLine();
+
                     } else {
                         for (Map.Entry<String, String> registro : MapaAlumnosRegistro.entrySet()) {
                             System.out.println("Carnet: " + registro.getKey() + " | Nombre: " + registro.getValue());
@@ -76,13 +92,13 @@ public class PooForo1 {
                         break;
 
                     }
-
+                case 5:
+                    System.out.println("Saliendo del sistema...");
+                    break;
             }
 
         }
-
+        teclado.close();
     }
 
 }
-
-// wiiiiiiiiii
