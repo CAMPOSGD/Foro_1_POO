@@ -1,24 +1,34 @@
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
-public class EjemploCollection {
-    public static void main(String[] args) {
+class EjemploCollection {
+    static void main() {
 
-        Collection<String> listaMarcasCoches = new ArrayList<>();
+        // 1. DECLARACIÓN
+        // Creamos una colección de enteros. HashSet no permite duplicados.
+        Collection<Integer> numeros = new HashSet<>();
 
-        listaMarcasCoches.add("Audi");
-        listaMarcasCoches.add("Porsche");
-        listaMarcasCoches.add("Aston Martin");
-        listaMarcasCoches.add("Ferrari");
-        listaMarcasCoches.add("Mercedes");
-        listaMarcasCoches.add("Seat");
+        // 2. ASIGNACIÓN DE VALORES (Añadir)
+        numeros.add(10);
+        numeros.add(20);
+        numeros.add(30);
+        numeros.add(10); // Intentamos añadir un duplicado
 
-        System.out.println("Número elementos antes de eliminar: " + listaMarcasCoches.size());
-        System.out.println("Elementos: " + listaMarcasCoches.toString());
+        System.out.println("Colección tras añadir valores: " + numeros);
+        // Nota: Solo verás [20, 10, 30] (el orden puede variar y el 10 no se repite)
 
-        // Removiendo elemento por nombre
-        listaMarcasCoches.remove("Seat");
+        // 3. ELIMINACIÓN DE VALORES
 
-        System.out.println("Elementos después de eliminar: " + listaMarcasCoches);
+        // Eliminar un valor específico
+        numeros.remove(20);
+        System.out.println("Tras eliminar el 20: " + numeros);
+
+        // Eliminar usando una condición (Borrar todos los mayores a 25)
+        numeros.removeIf(n -> n > 25);
+        System.out.println("Tras eliminar mayores a 25: " + numeros);
+
+        // Vaciar la colección por completo
+        numeros.clear();
+        System.out.println("¿Está vacía la colección?: " + true);
     }
 }
